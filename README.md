@@ -1,2 +1,4 @@
 # rtos-synthetic-posix-xpack
-A source xPack with the µOS++ scheduler port for running on synthetic POSIX platforms
+
+This project does not use the `master` branch, please
+switch to the `xpack` branch to get the project files.
