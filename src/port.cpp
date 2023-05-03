@@ -68,7 +68,7 @@ namespace micro_os_plus
             = reinterpret_cast<ucontext_t*> (&(th_ctx->port_.ucontext));
 #pragma GCC diagnostic pop
 
-#if defined(MICRO_OS_PLUS_TRACE_RTMICRO_OS_PLUS_THREAD_CONTEXT)
+#if defined(MICRO_OS_PLUS_TRACE_RTOS_THREAD_CONTEXT)
         trace::printf ("port::context::%s() getcontext %p\n", __func__, ctx);
 #endif
 
@@ -91,7 +91,7 @@ namespace micro_os_plus
         ctx->uc_stack.ss_size = th_ctx->stack ().size ();
         ctx->uc_stack.ss_flags = 0;
 
-#if defined(MICRO_OS_PLUS_TRACE_RTMICRO_OS_PLUS_THREAD_CONTEXT)
+#if defined(MICRO_OS_PLUS_TRACE_RTOS_THREAD_CONTEXT)
         trace::printf ("port::context::%s() makecontext %p\n", __func__, ctx);
 #endif
 #pragma GCC diagnostic push
@@ -162,7 +162,7 @@ namespace micro_os_plus
               &(rtos::scheduler::current_thread_->context_.port_.ucontext));
 #pragma GCC diagnostic pop
 
-#if defined(MICRO_OS_PLUS_TRACE_RTMICRO_OS_PLUS_THREAD_CONTEXT)
+#if defined(MICRO_OS_PLUS_TRACE_RTOS_THREAD_CONTEXT)
           trace::printf ("port::scheduler::%s() ctx %p %s\n", __func__,
                          new_context,
                          rtos::scheduler::current_thread_->name ());
@@ -206,13 +206,13 @@ namespace micro_os_plus
           if (rtos::scheduler::locked ()
               || rtos::interrupts::in_handler_mode ())
             {
-#if defined(MICRO_OS_PLUS_TRACE_RTMICRO_OS_PLUS_THREAD_CONTEXT)
+#if defined(MICRO_OS_PLUS_TRACE_RTOS_THREAD_CONTEXT)
               trace::printf ("port::scheduler::%s() nop\n", __func__);
 #endif
               return;
             }
 
-#if defined(MICRO_OS_PLUS_TRACE_RTMICRO_OS_PLUS_THREAD_CONTEXT)
+#if defined(MICRO_OS_PLUS_TRACE_RTOS_THREAD_CONTEXT)
           trace::printf ("port::scheduler::%s()\n", __func__);
 #endif
 
@@ -236,7 +236,7 @@ namespace micro_os_plus
               {
                 save = true;
               }
-#if defined(MICRO_OS_PLUS_TRACE_RTMICRO_OS_PLUS_THREAD_CONTEXT)
+#if defined(MICRO_OS_PLUS_TRACE_RTOS_THREAD_CONTEXT)
             trace::printf ("port::scheduler::%s() old %s %d %d\n", __func__,
                            old_thread->name (), old_thread->state_, save);
 #endif
@@ -259,7 +259,7 @@ namespace micro_os_plus
             {
               if (save)
                 {
-#if defined(MICRO_OS_PLUS_TRACE_RTMICRO_OS_PLUS_THREAD_CONTEXT)
+#if defined(MICRO_OS_PLUS_TRACE_RTOS_THREAD_CONTEXT)
                   trace::printf (
                       "port::scheduler::%s() swapcontext %s -> %s \n",
                       __func__, old_thread->name (),
@@ -275,7 +275,7 @@ namespace micro_os_plus
                 }
               else
                 {
-#if defined(MICRO_OS_PLUS_TRACE_RTMICRO_OS_PLUS_THREAD_CONTEXT)
+#if defined(MICRO_OS_PLUS_TRACE_RTOS_THREAD_CONTEXT)
                   trace::printf ("port::scheduler::%s() setcontext %s\n",
                                  __func__,
                                  rtos::scheduler::current_thread_->name ());
@@ -292,7 +292,7 @@ namespace micro_os_plus
             }
           else
             {
-#if defined(MICRO_OS_PLUS_TRACE_RTMICRO_OS_PLUS_THREAD_CONTEXT)
+#if defined(MICRO_OS_PLUS_TRACE_RTOS_THREAD_CONTEXT)
               trace::printf ("port::scheduler::%s() nop %s\n", __func__,
                              old_thread->name ());
 #endif
