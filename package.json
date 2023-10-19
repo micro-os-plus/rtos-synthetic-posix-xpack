@@ -1,7 +1,7 @@
 {
   "name": "@micro-os-plus/rtos-synthetic-posix",
   "version": "0.1.0",
-  "description": "A source xPack with the µOS++ scheduler port for running on synthetic POSIX platforms",
+  "description": "A source code library with the µOS++ scheduler port for running on synthetic POSIX platforms",
   "main": "",
   "scripts": {
     "npm-install": "npm install",
